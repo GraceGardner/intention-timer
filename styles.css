@@ -1,11 +1,10 @@
-/* ~~~~~~~~~~~~~ BASIC ELEMENTS ~~~~~~~~~~~~~~~ */
 
-* {
+
+
+
+
+html {
   font-family: Montserrat;
-}
-
-button:active {
-  background-color: #2B2733;
 }
 
 body {
@@ -34,9 +33,14 @@ main {
 }
 
 h1,
-h2,
+h2 {
+  font-weight: 300;
+}
+
+
 h3 {
   font-weight: 300;
+  margin: 0px;
 }
 
 div {
@@ -51,12 +55,9 @@ div {
   justify-content: space-evenly;
 }
 
-h3,
 p {
-  margin: 0px;
+  margin: 0;
 }
-
-/* ~~~~~~~~~~~~~ MAIN VIEW ~~~~~~~~~~~~~~~ */
 
 .activity-container {
   background-color: #2B2733;
@@ -64,23 +65,51 @@ p {
   padding: 0% 2% 2% 2%;
 }
 
-.seconds-input,
 .input {
+  width: 100%;
+  background-color: #46424D;
+  border: 0;
+  border-bottom: 1px solid #CBC9CF;
+  font-size: 18px;
+  line-height: 40px;
+  color: #CBC9CF;
+}
+
+.minutes-container {
+  width: 40%;
+  height: 40%;
+}
+
+.seconds-container {
+  width: 40%;
+  height: 40%;
+}
+
+.seconds-input {
   width: 100%;
   background-color: #46424D;
   border: 0;
   border-bottom: 1px solid #CBC9CF;
 }
 
-.input {
-  font-size: 18px;
-  line-height: 40px;
-  color: #CBC9CF;
+.no-logged-activities {
+  text-align: center;
+  padding-top: 3%;
 }
 
-.time-container {
-  width: 40%;
-  height: 40%;
+.button-image {
+  max-width: 30px;
+  max-height: auto;
+}
+
+.category-button {
+  background-color: #46424D;
+  border: 2px solid #CBC9CF;
+  border-radius: 5px;
+  width: 27%;
+  padding: 1% 0% 1% 0%;
+  color: #CBC9CF;
+  font-size: 120%;
 }
 
 .category-container,
@@ -90,7 +119,22 @@ p {
   justify-content: space-between;
 }
 
-/* ~~~~~~~~~~~~~ TIMER VIEW ~~~~~~~~~~~~~~~ */
+.white-button {
+  background-color: #CBC9CF;
+  border: 0;
+  border-radius: 3px;
+  padding: 1.5% 5% 1.5% 5%;
+  color: #46424D;
+  font-size: 20px;
+}
+
+.start-activity-button {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 16px;
+  max-width: 200px;
+  align-self: flex-end;
+}
 
 .timer-container {
   display: flex;
@@ -110,45 +154,13 @@ p {
   display: flex;
 }
 
-/* ~~~~~~~~~~~~~ BUTTONS ~~~~~~~~~~~~~~~ */
-
-.button-image {
-  max-width: 30px;
-  max-height: auto;
-}
-
-.category-button {
-  background-color: #46424D;
-  border: 2px solid #CBC9CF;
-  border-radius: 5px;
-  width: 27%;
-  padding: 1% 0% 1% 0%;
-  color: #CBC9CF;
-  font-size: 120%;
-}
-
-.white-button {
-  background-color: #CBC9CF;
-  border: 0;
-  border-radius: 3px;
-  padding: 1.5% 5% 1.5% 5%;
-  color: #46424D;
-  font-size: 20px;
-}
-
-.start-activity-button {
-  font-weight: 400;
-  font-size: 16px;
-  max-width: 200px;
-  align-self: flex-end;
-}
-
 .start-timer-button {
   background-color: #46424D;
   border-radius: 50%;
   border: 2px solid;
   margin-bottom: 50px;
   padding: 16% 12%;
+  font-family: Montserrat;
   font-weight: 300;
   font-size: 24px;
   max-width: 40%;
@@ -177,8 +189,6 @@ p {
   color: #CBC9CF;
 }
 
-/* ~~~~~~~~~~~~~ MAIN VIEW ERROR MESSAGES ~~~~~~~~~~~~~~~ */
-
 .error {
   color: #EFB7EC;
   font-size: 15px;
@@ -189,23 +199,6 @@ p {
   max-width: 15px;
   max-height: auto;
   margin-right: 5px;
-}
-
-/* ~~~~~~~~~~~~~ PAST ACTIVITY CARDS ~~~~~~~~~~~~~~~ */
-
-.past-activities-container {
-  background-color: #2B2733;
-  width: 33%;
-  border-left: 3px solid #46424D;
-  padding-left: 2%;
-  padding-right: 2%;
-  overflow-y: scroll;
-  max-height: 67%;
-}
-
-.no-logged-activities {
-  text-align: center;
-  padding-top: 3%;
 }
 
 .card {
@@ -243,6 +236,16 @@ p {
   border-radius: 3px;
 }
 
+.completed-activity-reset {
+  justify-content: flex-start;
+}
+
+.create-new-button {
+  margin-top: 20%;
+  margin-left: 17%;
+  max-width: 400px;
+}
+
 .study {
    background-color: #B3FD78;
  }
@@ -255,19 +258,15 @@ p {
   background-color: #FD8078;
 }
 
-/* ~~~~~~~~~~~~~ RESET VIEW ~~~~~~~~~~~~~~~ */
-
-.completed-activity-reset {
-  justify-content: flex-start;
+.past-activities-container {
+  background-color: #2B2733;
+  width: 33%;
+  border-left: 3px solid #46424D;
+  padding-left: 2%;
+  padding-right: 2%;
+  overflow-y: scroll;
+  max-height: 67%;
 }
-
-.create-new-button {
-  margin-top: 20%;
-  margin-left: 17%;
-  max-width: 400px;
-}
-
-/* ~~~~~~~~~~~~~ HIDDEN ~~~~~~~~~~~~~~~ */
 
 .hidden {
   display: none;

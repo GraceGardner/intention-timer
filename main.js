@@ -28,28 +28,18 @@ var categoryColorBar = '';
 var currentActivity = {};
 var activityCategory = undefined;
 
-document.addEventListener("load", displayActivity());
-studyBtn.addEventListener("click", activateStudy);
-meditateBtn.addEventListener("click", activateMeditate);
-exerciseBtn.addEventListener("click", activateExercise);
-startActivityBtn.addEventListener("click", startActivity);
-startTimerBtn.addEventListener("click", start);
-logActivityBtn.addEventListener("click", saveCard);
-createActivtyBtn.addEventListener("click", goHome);
-minutesInput.addEventListener("input", preventCharacters);
-secondsInput.addEventListener("input", preventCharacters);
 
 function preventCharacters() {
   this.value.replace(/[e\+\-]/gi, '')
-};
+}
 
 function disableStart() {
   startTimerBtn.disabled = true;
-};
+}
 
 function resetStart() {
   startTimerBtn.disabled = false;
-};
+}
 
 function goHome() {
   startTimerBtn.innerText = "START";
@@ -57,7 +47,7 @@ function goHome() {
   clearInputValues();
   resetStart();
   hide(logActivityBtn);
-};
+}
 
 function clearInputValues() {
   activityInput.value = '';
@@ -65,14 +55,14 @@ function clearInputValues() {
   secondsInput.value = '';
   activityCategory = undefined;
   removeColor();
-};
+}
 
 function saveCard() {
   currentActivity.saveToStorage();
   displayActivity();
   showHide(completedActivityView, currentActivityView);
   currentActivity = {};
-};
+}
 
 function displayActivity() {
   var savedActivities = parseData();
@@ -90,38 +80,38 @@ function displayActivity() {
       </section>`
     }
   }
-};
+}
 
 function stringifyData(savedActivities) {
   localStorage.setItem('savedActivities', JSON.stringify(savedActivities));
-};
+}
 
 function parseData() {
   return JSON.parse(localStorage.getItem('savedActivities'));
-};
+}
 
 function updateDescription() {
   descriptionDisplay.innerText = activityInput.value;
-};
+}
 
 function updateTimer() {
   currentActivity.minutes = currentActivity.minutes.toString().padStart(2, '0');
   currentActivity.seconds = currentActivity.seconds.toString().padStart(2, '0');
   timerDisplay.innerText = `${currentActivity.minutes}:${currentActivity.seconds}`;
-};
+}
 
 function start() {
   currentActivity.countdown(currentActivity.minutes, currentActivity.seconds);
   disableStart();
-};
+}
 
 function show(element) {
   element.classList.remove("hidden");
-};
+}
 
 function hide(element) {
   element.classList.add("hidden");
-};
+}
 
 function showHide(view, vanish) {
   show(view);
@@ -137,28 +127,28 @@ function startActivity() {
     updateDescription();
     updateTimer();
   }
-};
+}
 
 function createActivity() {
   currentActivity = {};
   currentActivity = new Activity(activityCategory, categoryColorBar, activityInput.value, minutesInput.value, secondsInput.value);
-};
+}
 
 function assignCategory(category) {
   activityCategory = category;
-};
+}
 
 function assignCategoryColor(category) {
   categoryColorBar = category;
-};
+}
 
 function addErrorStyling(input) {
   input.classList.add("error");
-};
+}
 
 function removeErrorStyling(input) {
   input.classList.remove("error");
-};
+}
 
 function throwError() {
   if (!activityInput.value) {
@@ -174,7 +164,7 @@ function throwError() {
     show(categoryError);
   }
   removeError();
-};
+}
 
 function removeError() {
   if (activityInput.value) {
@@ -189,7 +179,7 @@ function removeError() {
   } if (activityCategory) {
     hide(categoryError);
   }
-};
+}
 
 function removeColor() {
   showHide(studyImg, studyImgActive);
@@ -199,22 +189,22 @@ function removeColor() {
   removeClass(meditateBtn, "meditate-button-color");
   removeClass(exerciseBtn, "exercise-button-color");
   clearColor();
-};
+}
 
 function addClass(variableName, className) {
   variableName.classList.add(className);
   startTimerBtn.classList.add(className);
-};
+}
 
 function clearColor() {
   startTimerBtn.classList.remove("study-button-color");
   startTimerBtn.classList.remove("meditate-button-color");
   startTimerBtn.classList.remove("exercise-button-color");
-};
+}
 
 function removeClass(variableName, className) {
-    variableName.classList.remove(className);
-};
+  variableName.classList.remove(className);
+}
 
 function activateStudy() {
   removeColor();
@@ -222,7 +212,7 @@ function activateStudy() {
   addClass(studyBtn, "study-button-color");
   showHide(studyImgActive, studyImg);
   assignCategory("Study");
-};
+}
 
 function activateMeditate() {
   removeColor();
@@ -230,7 +220,7 @@ function activateMeditate() {
   addClass(meditateBtn, "meditate-button-color");
   showHide(meditateImgActive, meditateImg);
   assignCategory("Meditate");
-};
+}
 
 function activateExercise() {
   removeColor();
@@ -238,4 +228,15 @@ function activateExercise() {
   addClass(exerciseBtn, "exercise-button-color");
   showHide(exerciseImgActive, exerciseImg);
   assignCategory("Exercise");
-};
+}
+
+document.addEventListener("load", displayActivity());
+studyBtn.addEventListener("click", activateStudy);
+meditateBtn.addEventListener("click", activateMeditate);
+exerciseBtn.addEventListener("click", activateExercise);
+startActivityBtn.addEventListener("click", startActivity);
+startTimerBtn.addEventListener("click", start);
+logActivityBtn.addEventListener("click", saveCard);
+createActivtyBtn.addEventListener("click", goHome);
+minutesInput.addEventListener("input", preventCharacters);
+secondsInput.addEventListener("input", preventCharacters);
